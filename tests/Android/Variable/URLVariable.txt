@@ -1,0 +1,2 @@
+*** Variables ***
+${HomePageURL}    https://cathaybk.com.tw/cathaybk/

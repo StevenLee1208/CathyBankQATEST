@@ -1,0 +1,31 @@
+*** Settings ***
+Library    AppiumLibrary
+Resource    AndroidDeviceInfo.txt
+
+*** Keywords ***
+Click Element After It Is Visible
+    [Arguments]    ${locator}    ${timeout}
+    Wait Until Element Is Visible    ${locator}    timeout=${timeout}
+    Click Element    ${locator}
+
+
+Scroll Down Until Element Found
+    [Arguments]    ${locator}
+    FOR    ${i}    IN RANGE    30
+        ${is_found}=    Run Keyword And Return Status    Page Should Contain Element    ${locator}
+        Exit For Loop If    '${is_found}' == 'True'
+        Run Keyword If    '${i}' == '29'    Fail    Could not find element
+        Swipe    420    1200    420    300    duration=1000
+    END
+
+Scroll UP Until Element Found
+    [Arguments]    ${locator}
+    FOR    ${i}    IN RANGE    30
+        ${is_found}=    Run Keyword And Return Status    Page Should Contain Element    ${locator}
+        Exit For Loop If    '${is_found}' == 'True'
+        Run Keyword If    '${i}' == '29'    Fail    Could not find element
+        Swipe    875    1500    875    1750    duration=1000
+    END
+
+Back To Previous Page
+    Swipe    42    1000    420    1000    duration=1000
