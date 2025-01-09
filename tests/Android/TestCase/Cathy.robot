@@ -30,8 +30,8 @@ Test Setup    Go To Url    ${HomePageURL}
     [Tags]    P3
     Wait Until Element Is Visible    ${HomePage_text_createAccount}    10
     Click Element After It Is Visible    ${HomePage_button_selectButton}    20
-    Click Element After It Is Visible    ${HomePage_select_productIntroduce}    20
-    Click Element After It Is Visible    ${HomePage_select_creditcard}    20
+    Click Element After It Is Visible    ${HomePageSelectList_select_productIntroduce}    20
+    Click Element After It Is Visible    ${HomePageSelectList_select_creditcard}    20
     Wait Until Element Is Visible    xpath=(//*[@text="信用卡"])[2]    10
     Capture Page Screenshot    cathay_case2.png
     ${elements}    Get Webelements    xpath=(//*[@text="信用卡"])[2]//following-sibling::*
@@ -44,19 +44,19 @@ Test Setup    Go To Url    ${HomePageURL}
     [Tags]    P3    test
     Wait Until Element Is Visible    ${HomePage_text_createAccount}    10
     Click Element After It Is Visible    ${HomePage_button_selectButton}    20
-    Click Element After It Is Visible    ${HomePage_select_productIntroduce}    20
-    Click Element After It Is Visible    ${HomePage_select_creditcard}    20
+    Click Element After It Is Visible    ${HomePageSelectList_select_productIntroduce}    20
+    Click Element After It Is Visible    ${HomePageSelectList_select_creditcard}    20
     Wait Until Element Is Visible    xpath=(//*[@text="信用卡"])[2]    10
-    Click Element After It Is Visible    ${HomePage_select_creditcardIntroduce}    10
+    Click Element After It Is Visible    ${HomePageSelectList_select_creditcardIntroduce}    10
     Sleep    2
     ${contexts} =    Get Contexts
     Switch To Context    WEBVIEW_chrome
     Sleep    2
     ${page_source}=    Get Source
     Sleep    2
-    Scroll Element Into View    ${HomePage_text_blockCardTitle}
-    Wait Until Element Is Visible    ${HomePage_button_cardSelectButton}    10
-    ${card_count}    Get Webelements    ${HomePage_button_cardSelectButton}
+    Scroll Element Into View    ${CardIntroductionPage_text_blockCardTitle}
+    Wait Until Element Is Visible    ${CardIntroductionPage__button_cardSelectButton}    10
+    ${card_count}    Get Webelements    ${CardIntroductionPage__button_cardSelectButton}
     ${block_card_num}    Get Length    ${card_count}
     Log To Console    !!!!停發信用卡數量為${block_card_num}!!!
     Capture Page Screenshot    card1.png    ##第一張卡
@@ -66,6 +66,6 @@ Test Setup    Go To Url    ${HomePageURL}
         Sleep    1
         Capture Page Screenshot    card${counter}.png
     END
-    ${block_card_list}    Get Webelements    ${HomePage_image_cardNumber}
+    ${block_card_list}    Get Webelements    ${CardIntroductionPage_image_cardNumber}
     ${block_block_card_number}    Get Length    ${block_card_list}
     Should Be Equal As Numbers    ${block_block_card_number}    ${block_card_num}    ##判斷截圖數量是否與卡片數量一致
