@@ -36,23 +36,23 @@
     ```
 
 ### Directory Structure
-以下是目錄結構範例：
-``
-├─ reports 
-│   └─ 截圖
-│   └─ log.html
-│   └─ output.xml
-│   └─ report.html
-├─ tests
-│   └─ Android
-│       ├─ Keyword       # 動作 function
-│       │   ├─ AndroidDeviceInfo.txt  # 定義裝置相關功能
-│       ├─ TestCase      # Robot Framework TestCase
-│       │   ├─ Cathy.robot
-│       ├─ Variable      # 定義 XPath 或其他變數
-│       │   ├─ CathyBankVariable.txt
-├─ Robot_README.md
-└─ requirements.txt
+
+```
+├── reports
+│   ├── 截圖
+│   ├── log.html
+│   ├── output.xml
+│   └── report.html
+├── tests
+│   ├── Android
+│   │   ├── Keyword       # 動作 function
+│   │   │   └── AndroidDeviceInfo.txt  # 定義裝置相關功能
+│   │   ├── TestCase      # Robot Framework TestCase
+│   │   │   └── Cathy.robot
+│   │   └── Variable      # 定義 XPath 或其他變數
+│   │       └── CathyBankVariable.txt
+├── Robot_README.md
+└── requirements.txt
 ```
 
 ### Testing Tools
