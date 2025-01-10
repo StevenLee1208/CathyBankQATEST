@@ -28,8 +28,12 @@ def celebrate(celebrate_string):
 def find_last_person(people_num):
     # QA部門今天舉辦團康活動，有n個人圍成一圈，順序排號。從第一個人開始報數（從1到3報數），凡報到3的人退出圈子。請利用一段程式計算出，最後留下的那位同事，是所有同事裡面的第幾順位?
     ## 邏輯是從基準點+2剔除那個人 然後用%len(list)的方式達到圍成一圈的效果
-    people = list(range(1, people_num + 1))
-    index = 0
+    if people_num >= 0 or people <=100:
+        people = list(range(1, people_num + 1))
+        index = 0
+    else:
+        return "請輸入(0-100)的數字"
+        
     while len(people) > 1:
         index = (index + 2) % len(people)
         people.pop(index)
