@@ -2,6 +2,11 @@
 
 # Run Test Cases with Robot Framework
 
+
+# 考題需求
+# 1.跨平台可支援 可以針對不同的平台設定Config
+# 2.錯誤時會自動截圖 並且會跟log並存於log.html and report .html  and outpul.xml
+
 ## Emulator Devices
 | Device             | Version |
 |--------------------|---------|
@@ -91,7 +96,6 @@
      ```bash
      robot --variable devicename:<Device_Name> \
            --variable port:<Port> \
-           --variable logcat:./tests/Android/log/<Device_Name> \
            -d ./tests/Android/log/<Device_Name> \
            -i regression <robotfilepath>
      ```
@@ -102,7 +106,6 @@
      ```bash
      robot --variable devicename:<Device_Name> \
            --variable port:<Port> \
-           --variable logcat:./tests/Android/log/<Device_Name> \
            -d ./tests/Android/log/<Device_Name> \
            -i {priority_level} <robotfilepath>
      ```

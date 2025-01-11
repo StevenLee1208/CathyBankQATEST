@@ -23,10 +23,10 @@ def GetDeviceInfo(devicename, port):    ##手機config檔
         'automationName' : 'uiautomator2',
         'systemPort' : find_available_port(8140, 8199)
     }
-    elif(devicename == "Simulator_Pixel_8"):
+    elif(devicename == "Simulator_Pixel_4a"):
         desired_caps = {
         'platformName' : 'Android',
-        'platformVersion' : '14',
+        'platformVersion' : '12',
         'deviceName' : 'emulator-5554',
         'appPackage' : 'com.utonia.utobrain.staging',
         'appActivity' : 'com.utonia.utobrain.MainActivity',

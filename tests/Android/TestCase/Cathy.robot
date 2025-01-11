@@ -12,6 +12,8 @@ Suite Setup    Android Open Chrome Browser
 
 Test Setup    Go To Url    ${HomePageURL}
 
+Suite Teardown    Close Application
+
 
 *** Test Cases ***
 開啟國泰首頁並且截圖
