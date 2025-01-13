@@ -36,38 +36,29 @@ Suite Teardown    Close Application
     Click Element After It Is Visible    ${HomePageSelectList_select_creditcard}    20
     Wait Until Element Is Visible    xpath=(//*[@text="信用卡"])[2]    10
     Capture Page Screenshot    cathay_case2.png
-    ${elements}    Get Webelements    xpath=(//*[@text="信用卡"])[2]//following-sibling::*
-    ${elements_count}    Get Length    ${elements}
+    ${elements_count}    Wait For Element And Get Count    xpath=(//*[@text="信用卡"])[2]//following-sibling::*    10
     Log To Console    !!!!!!信用卡列表項目為${elements_count}!!!!!!!
 
 計算頁面上所有停發信用卡數量
     [Documentation]    個人金融 > 產品介紹 > 信用卡 > 卡片介紹 > 計算頁面上所有(停發)信用卡數量並截圖 答案位置reports/card1.png~card11.png
     ...    導向國泰首頁 > 點擊個人金融 > 產品介紹 > 信用卡 > 卡片介紹 > 切換webview模式 > 計算卡片出現數量與截圖數量(在過程中切換不同的卡片並且截圖)
-    [Tags]    P3    test
+    [Tags]    P2
     Wait Until Element Is Visible    ${HomePage_text_createAccount}    10
     Click Element After It Is Visible    ${HomePage_button_selectButton}    20
     Click Element After It Is Visible    ${HomePageSelectList_select_productIntroduce}    20
     Click Element After It Is Visible    ${HomePageSelectList_select_creditcard}    20
     Wait Until Element Is Visible    xpath=(//*[@text="信用卡"])[2]    10
     Click Element After It Is Visible    ${HomePageSelectList_select_creditcardIntroduce}    10
-    Sleep    2
-    ${contexts} =    Get Contexts
-    Switch To Context    WEBVIEW_chrome
-    Sleep    2
-    ${page_source}=    Get Source
-    Sleep    2
+    Switch To WebView And Get Source    WEBVIEW_chrome
     Scroll Element Into View    ${CardIntroductionPage_text_blockCardTitle}
-    Wait Until Element Is Visible    ${CardIntroductionPage__button_cardSelectButton}    10
-    ${card_count}    Get Webelements    ${CardIntroductionPage__button_cardSelectButton}
-    ${block_card_num}    Get Length    ${card_count}
-    Log To Console    !!!!停發信用卡數量為${block_card_num}!!!
+    ${card_count}    Wait For Element And Get Count    ${CardIntroductionPage__button_cardSelectButton}    10
+    Log To Console    !!!!停發信用卡數量為${card_count}!!!
     Capture Page Screenshot    card1.png    ##第一張卡
-    FOR    ${counter}    IN RANGE    2    ${block_card_num}+1
-        ${next_locator}    get_webelement    xpath=(//*[contains(@class, 'cubre-a-iconTitle__text') and contains(text(), '停發卡')]/following::span[contains(@class, 'swiper-pagination-bullet') ])[${counter}]
-        Click Element    ${next_locator}
+    FOR    ${counter}    IN RANGE    2    ${card_count}+1
+        Click Pagination Bullet    xpath=(//*[contains(@class, 'cubre-a-iconTitle__text') and contains(text(), '停發卡')]/following::span[contains(@class, 'swiper-pagination-bullet') ])[${counter}]    10
         Sleep    1
         Capture Page Screenshot    card${counter}.png
     END
     ${block_card_list}    Get Webelements    ${CardIntroductionPage_image_cardNumber}
     ${block_block_card_number}    Get Length    ${block_card_list}
-    Should Be Equal As Numbers    ${block_block_card_number}    ${block_card_num}    ##判斷截圖數量是否與卡片數量一致
+    Should Be Equal As Numbers    ${block_block_card_number}    ${card_count}    ##判斷截圖數量是否與卡片數量一致
