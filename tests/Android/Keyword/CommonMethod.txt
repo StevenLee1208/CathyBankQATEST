@@ -27,5 +27,27 @@ Scroll UP Until Element Found
         Swipe    875    1500    875    1750    duration=1000
     END
 
+Switch To WebView And Get Source
+    [Arguments]    ${webview_name}
+    Sleep    2
+    ${contexts}=    Get Contexts
+    Switch To Context    ${webview_name}
+    Sleep    2
+    ${page_source}=    Get Source
+    Sleep    2
+
+Wait For Element And Get Count
+    [Arguments]    ${element_locator}    ${timeout}
+    Wait Until Element Is Visible    ${element_locator}    ${timeout}
+    ${elements}    Get Webelements    ${element_locator}
+    ${count}=    Get Length    ${elements}
+    RETURN    ${count}
+
+Click Pagination Bullet
+    [Arguments]    ${locator}    ${timeout}
+    Wait Until Element Is Visible    ${locator}    ${timeout}
+    ${next_locator}=    Get Webelement    ${locator}
+    Click Element    ${next_locator}
+
 Back To Previous Page
     Swipe    42    1000    420    1000    duration=1000
